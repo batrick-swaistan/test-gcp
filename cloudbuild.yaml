@@ -5,9 +5,9 @@ steps:
     args: ['clean', 'package']
     dir: '.'
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/studied-yen-423602-b9/gcloud-build-testimg:tag', '.']
+    args: ['build', '-t', 'gcr.io/sandbox-427408/gcloud-build-testimg:tag', '.']
     dir: '.'
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/studied-yen-423602-b9/gcloud-build-testimg:tag']
+    args: ['push', 'gcr.io/sandbox-427408/gcloud-build-testimg:tag']
 
 serviceAccount: sandbox-427408@appspot.gserviceaccount.com

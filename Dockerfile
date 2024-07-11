@@ -1,7 +1,4 @@
-FROM openjdk:17-slim
-
-COPY ./target/testgcp-0.0.1-SNAPSHOT.jar /
-
-ENTRYPOINT exec java -jar /testgcp-0.0.1-SNAPSHOT.jar
-
+FROM openjdk:22-jdk
+COPY  . /app/
+ENTRYPOINT ["java", "-jar", "app.jar"]
 EXPOSE 8080

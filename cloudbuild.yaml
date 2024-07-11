@@ -1,19 +1,22 @@
+logsBucket: gs://my-test-bucket-00
 steps:
-  # Step 2: Build the Docker image
+  # - name: 'gcr.io/cloud-builders/gcloud'
+  #   args: ['container', 'images', 'delete', 'gcr.io/studied-yen-423602-b9/gcloud-build-image:your-tag', '--force-delete-tags']
+  - name: 'gcr.io/cloud-builders/mvn'
+    args: ['clean', 'package']
+    dir: '.'
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/studied-yen-423602-b9/spring-app', '.']
-
-  # Step 3: Push the Docker image to Google Container Registry
+    args: ['build', '-t', 'gcr.io/studied-yen-423602-b9/gcloud-build-image:tag', '.']
+    dir: '.'
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/studied-yen-423602-b9/spring-app']
+    args: ['push', 'gcr.io/studied-yen-423602-b9/gcloud-build-image:tag']
+  # - name: 'gcr.io/cloud-builders/gcloud'
+  #   entrypoint: 'bash'
+  #   args:
+  #     - '-c'
+  #     - |
+  #       # Delete old image tag if it exists
+  #       gcloud container images delete gcr.io/studied-yen-423602-b9/gcloud-build-image:old-tag --quiet
 
-  # Step 4: Deploy the Docker image to Cloud Run (optional)
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
-    args: ['run', 'deploy', 'spring-app', '--image', 'gcr.io/studied-yen-423602-b9/spring-app', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
-
-images:
-  - 'gcr.io/studied-yen-423602-b9/spring-app'
-
-options:
-  logging: CLOUD_LOGGING_ONLY
+# Specify service account if needed
+serviceAccount: your-service-account@studied-yen-423602-b9.iam.gserviceaccount.com

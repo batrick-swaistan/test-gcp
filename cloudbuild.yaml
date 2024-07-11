@@ -1,0 +1,16 @@
+steps:
+  # Step 2: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/studied-yen-423602-b9/spring-app', '.']
+
+  # Step 3: Push the Docker image to Google Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/studied-yen-423602-b9/spring-app']
+
+  # Step 4: Deploy the Docker image to Cloud Run (optional)
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args: ['run', 'deploy', 'spring-app', '--image', 'gcr.io/studied-yen-423602-b9/spring-app', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
+
+images:
+  - 'gcr.io/studied-yen-423602-b9/spring-app'

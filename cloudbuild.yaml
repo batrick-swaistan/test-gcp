@@ -1,4 +1,4 @@
-logsBucket: gs://my-test-bucket-00
+logsBucket: gs://test_bucket_build
 steps:
 
   - name: 'gcr.io/cloud-builders/mvn'
@@ -10,4 +10,4 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/studied-yen-423602-b9/gcloud-build-testimg:tag']
 
-serviceAccount: your-service-account@studied-yen-423602-b9.iam.gserviceaccount.com
+serviceAccount: sandbox-427408@appspot.gserviceaccount.com

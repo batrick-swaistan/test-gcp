@@ -1,22 +1,13 @@
 logsBucket: gs://my-test-bucket-00
 steps:
-  # - name: 'gcr.io/cloud-builders/gcloud'
-  #   args: ['container', 'images', 'delete', 'gcr.io/studied-yen-423602-b9/gcloud-build-image:your-tag', '--force-delete-tags']
+
   - name: 'gcr.io/cloud-builders/mvn'
     args: ['clean', 'package']
     dir: '.'
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/studied-yen-423602-b9/gcloud-build-image:tag', '.']
+    args: ['build', '-t', 'gcr.io/studied-yen-423602-b9/gcloud-build-testimg:tag', '.']
     dir: '.'
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/studied-yen-423602-b9/gcloud-build-image:tag']
-  # - name: 'gcr.io/cloud-builders/gcloud'
-  #   entrypoint: 'bash'
-  #   args:
-  #     - '-c'
-  #     - |
-  #       # Delete old image tag if it exists
-  #       gcloud container images delete gcr.io/studied-yen-423602-b9/gcloud-build-image:old-tag --quiet
+    args: ['push', 'gcr.io/studied-yen-423602-b9/gcloud-build-testimg:tag']
 
-# Specify service account if needed
 serviceAccount: your-service-account@studied-yen-423602-b9.iam.gserviceaccount.com

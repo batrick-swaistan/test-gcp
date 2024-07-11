@@ -14,7 +14,7 @@ public class TestgcpApplication {
 	class HelloworldController {
 		@GetMapping("/")
 		String hello() {
-			return "Hello " + "Batrick Swaistan" + "!";
+			return "Hello " + "Batrick " + "!";
 		}
 	}
 

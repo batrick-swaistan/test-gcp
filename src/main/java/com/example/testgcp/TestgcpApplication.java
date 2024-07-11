@@ -10,19 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestgcpApplication {
 
 
-	@RestController
-	class HelloworldController {
-		@GetMapping("/")
-		String hello() {
-			return "Hello " + "World " + "!";
-		}
-
-		@GetMapping("/get")
-		String world() {
-			return "Batrick " + "Swaistan " + "!";
-		}
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(TestgcpApplication.class, args);
 	}

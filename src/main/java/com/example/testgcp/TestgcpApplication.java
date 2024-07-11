@@ -16,6 +16,11 @@ public class TestgcpApplication {
 		String hello() {
 			return "Hello " + "World " + "!";
 		}
+
+		@GetMapping("/get")
+		String world() {
+			return "Batrick " + "Swaistan " + "!";
+		}
 	}
 
 	public static void main(String[] args) {
